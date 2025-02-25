@@ -1,0 +1,35 @@
+{
+    "name": "Node.js",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "workspaceFolder": "/workspace",
+    "mounts": [
+        "source=${localWorkspaceFolder},target=/workspace,type=bind",
+        "source=${localWorkspaceFolderBasename}_node_modules,target=/workspace/node_modules,type=volume"
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "MS-CEINTL.vscode-language-pack-ja",
+                "Vue.volar",
+                "GitHub.copilot-chat",
+                "GitHub.copilot",
+                "sdras.vue-vscode-snippets",
+                "vuetifyjs.vuetify-vscode",
+                "dariofuzinato.vue-peek",
+                "xabikos.JavaScriptSnippets",
+                "formulahendry.auto-close-tag",
+                "formulahendry.auto-rename-tag",
+                "alefragnani.Bookmarks",
+                "PKief.material-icon-theme",
+                "johnpapa.vscode-peacock",
+                "mhutchie.git-graph",
+                "donjayamanne.githistory",
+                "ms-azuretools.vscode-docker",
+                "Gruntfuggly.todo-tree"
+            ]
+        }
+    },
+}
