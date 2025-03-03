@@ -1,52 +1,33 @@
 <template>
-  <div>
-    <v-card class="question-area" width="1000" height="500">
-      <div class="question">
-        <div class="answer-member">
+  <div class="custom-font-size">
+    <v-card class="pa-14 ml-12 mt-6" width="1000" height="500">
+      <v-row class="text-center d-flex justify-center mt-14">
+        <v-col cols="4">
           <p>{{ "回答者" }}</p>
-          <v-img src="/src/assets/photo/白川.png"></v-img>
-          <p>{{ "写真" }}</p>
-          <v-btn color="#558B2F" class="btn">Start</v-btn>
-        </div>
-        <p class="no">{{ "の" }}</p>
-        <div class="answer-question">
-          <p>{{ "お題" }}</p>
           <div>
+            <v-img
+              class="answer-img mx-auto mb-4 secondary rounded-circle d-inline-block border-xl"
+              src="@/assets/白川.jpg"
+              alt="回答者の写真"
+              width="150"
+              height="150"
+              border-0
+            />
+          </div>
+          <v-btn color="#558B2F" class="btn white--text">Start</v-btn>
+        </v-col>
+        <v-col cols="2" class="my-auto">{{ "の" }}</v-col>
+        <v-col cols="4">
+          <p>{{ "お題" }}</p>
+          <div class="mb-6 mt-6">
             {{ "質問" }}
           </div>
-          <v-btn color="#558B2F" class="btn">Start</v-btn>
-        </div>
-      </div>
+          <v-btn color="#558B2F" class="btn white--text">Start</v-btn>
+        </v-col>
+      </v-row>
     </v-card>
   </div>
 </template>
 <script>
 export default {};
 </script>
-
-<style>
-.question-area {
-  margin: 36px auto 24px 36px;
-  display: flex;
-}
-.question {
-  padding: 120px;
-  text-align: center;
-  font-size: 24px;
-  line-height: 72px;
-  display: flex;
-}
-.answer-member {
-  width: 35%;
-}
-.no {
-  padding-top: 56px;
-  width: 30%;
-}
-.answer-question {
-  width: 35%;
-}
-.btn {
-  color: #fff !important;
-}
-</style>

@@ -1,24 +1,29 @@
 <template>
-  <div id="app" style="background-color: orange" width="1080" height="1080">
-    <!-- <v-app-bar color="#F4E2D0">
-      <span class="white--text">
-        佐藤です、好きなおにぎりの具は梅干しです。
-      </span>
-    </v-app-bar> -->
-    <ThemeComponent />
-    <QuestionComponent />
-  </div>
+  <v-app color="orange">
+    <div id="app" style="background-color: orange" width="1080" height="1080">
+      <!-- <v-app-bar color="#F4E2D0">
+        <span class="white--text">
+          佐藤です、好きなおにぎりの具は梅干しです。
+        </span>
+      </v-app-bar> -->
+      <ThemeComponent />
+      <QuestionComponent />
+      <MembersComponent />
+    </div>
+  </v-app>
 </template>
 
 <script>
 import ThemeComponent from "./views/ThemeComponent.vue";
 import QuestionComponent from "./views/QuestionComponent.vue";
+import MembersComponent from "./views/MembersComponent.vue";
 
 export default {
   name: "MainComponent",
   components: {
     ThemeComponent,
     QuestionComponent,
+    MembersComponent,
   },
 };
 </script>
@@ -31,8 +36,7 @@ body,
   padding: 0;
   height: 100%;
   overflow: hidden;
-}
-#add {
-  background-color: orange;
+  font-family: "Arial", sans-serif;
+  font-size: 25px;
 }
 </style>
