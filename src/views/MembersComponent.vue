@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-navigation-drawer absolute permanent right width="600">
-      <p class="text-center font-weight-large mt-4"></p>
+    <v-navigation-drawer absolute permanent right width="35%">
+      <p class="text-center font-weight-large mt-4">{{ "参加者" }}</p>
       <div class="d-flex flex-wrap">
         <template v-for="(members, i) in membersList">
           <MemberComponent :key="i" :member="members" />

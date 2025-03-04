@@ -1,6 +1,6 @@
 <template>
   <v-app color="orange">
-    <div id="app" style="background-color: orange" width="1080" height="1080">
+    <div id="app" style="background-color: orange">
       <!-- <v-app-bar color="#F4E2D0">
         <span class="white--text">
           佐藤です、好きなおにぎりの具は梅干しです。

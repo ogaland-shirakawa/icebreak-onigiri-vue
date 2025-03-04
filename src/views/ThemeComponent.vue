@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card class="pa-10 ml-12 mt-5" width="1000" height="250">
+    <v-card class="pa-10 ml-12 mt-5" width="58%" height="250">
       <div>
         <div class="text-center">
           <p class="font-weight-large">{{ "お題" }}</p>

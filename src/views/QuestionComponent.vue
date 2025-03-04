@@ -1,6 +1,6 @@
 <template>
   <div class="custom-font-size">
-    <v-card class="pa-14 ml-12 mt-6" width="1000" height="500">
+    <v-card class="pa-14 ml-12 mt-6" width="58%" height="500">
       <v-row class="text-center d-flex justify-center mt-14">
         <v-col cols="4">
           <p>{{ "回答者" }}</p>

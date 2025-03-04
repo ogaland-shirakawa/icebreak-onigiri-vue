@@ -1,11 +1,11 @@
 <template>
   <div class="member d-flex">
-    <div class="text-center">
+    <div class="text-center mx-a">
       <v-img
-        class="mb-3 mx-6 secondary rounded-circle d-inline-block border-xl"
+        class="mb-3 mx-9 secondary rounded-circle d-inline-block"
         :src="require(`@/assets/${member.member_image}`)"
-        width="120"
-        height="120"
+        width="110"
+        height="110"
         border-0
       >
       </v-img>
