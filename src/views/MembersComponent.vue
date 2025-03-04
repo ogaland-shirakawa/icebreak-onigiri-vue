@@ -1,8 +1,12 @@
 <template>
   <div>
     <v-navigation-drawer absolute permanent right width="600">
-      <p class="text-center font-weight-large mt-4">{{ "参加者" }}</p>
-      <MemberComponent :members="memberList" />
+      <p class="text-center font-weight-large mt-4"></p>
+      <div class="d-flex flex-wrap">
+        <template v-for="(members, i) in membersList">
+          <MemberComponent :key="i" :member="members" />
+        </template>
+      </div>
     </v-navigation-drawer>
   </div>
 </template>
@@ -13,20 +17,53 @@ export default {
   components: {
     MemberComponent,
   },
-  deta() {
+  data() {
     return {
-      memberList: [
-        { value: "1", label: "吉岡さん" },
-        { value: "2", label: "アクイさん" },
-        { value: "3", label: "リリーさん" },
-        { value: "4", label: "もっさん" },
-        { value: "5", label: "しもぴーさん" },
-        { value: "6", label: "おたけさん" },
-        { value: "7", label: "うっちーさん" },
-        { value: "8", label: "みっぴーさん" },
-        { value: "9", label: "ながやんさん" },
-        { value: "10", label: "ななみん" },
-        { value: "11", label: "まこっちゃん" },
+      membersList: [
+        {
+          member_image: "吉岡さん.jpg",
+          nickname: "吉岡さん",
+        },
+        {
+          member_image: "しもぴーさん.jpg",
+          nickname: "しもぴーさん",
+        },
+        {
+          member_image: "アクイさん.jpg",
+          nickname: "アクイさん",
+        },
+        {
+          member_image: "リリーさん.jpg",
+          nickname: "リリーさん",
+        },
+        {
+          member_image: "もっさん.jpg",
+          nickname: "もっさん",
+        },
+        {
+          member_image: "おたけさん.jpg",
+          nickname: "おたけさん",
+        },
+        {
+          member_image: "うっちーさん.jpg",
+          nickname: "うっちーさん",
+        },
+        {
+          member_image: "みっぴーさん.jpg",
+          nickname: "みっぴーさん",
+        },
+        {
+          member_image: "ながやんさん.jpg",
+          nickname: "ながやんさん",
+        },
+        {
+          member_image: "白川.jpg",
+          nickname: "まこっちゃん",
+        },
+        {
+          member_image: "ななみん.jpg",
+          nickname: "ななみん",
+        },
       ],
     };
   },

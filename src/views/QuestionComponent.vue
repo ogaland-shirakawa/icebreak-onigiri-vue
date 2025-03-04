@@ -14,7 +14,7 @@
               border-0
             />
           </div>
-          <v-btn color="#558B2F" class="btn white--text">Start</v-btn>
+          <StartButtonComponent />
         </v-col>
         <v-col cols="2" class="my-auto">{{ "の" }}</v-col>
         <v-col cols="4">
@@ -22,12 +22,18 @@
           <div class="mb-6 mt-6">
             {{ "質問" }}
           </div>
-          <v-btn color="#558B2F" class="btn white--text">Start</v-btn>
+          <StartButtonComponent />
         </v-col>
       </v-row>
     </v-card>
   </div>
 </template>
 <script>
-export default {};
+import StartButtonComponent from "/workspace/src/views/StartButtonComponent.vue";
+
+export default {
+  components: {
+    StartButtonComponent,
+  },
+};
 </script>
