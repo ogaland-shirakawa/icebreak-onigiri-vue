@@ -2,7 +2,7 @@
   <div class="member d-flex">
     <div class="text-center mx-a">
       <v-img
-        class="mb-3 mx-9 secondary rounded-circle d-inline-block"
+        class="mb-3 mx-9 rounded-circle"
         :src="require(`@/assets/${member.member_image}`)"
         width="110"
         height="110"

@@ -5,29 +5,33 @@
         <div class="text-center">
           <div class="font-weight-large">{{ "お題" }}</div>
           <div class="mb-6 mt-6">
+            {{ result }}
             <ButtonComponent
               v-if="btnDisplay"
-              @click="theme_shuffle_button"
+              @click="startLottery"
               :btn-text="'Start'"
             />
             <ButtonComponent
               v-if="!btnDisplay"
-              @click="theme_shuffle_button"
+              @click="stopLottery"
               :btn-text="'Stop'"
             />
           </div>
         </div>
       </div>
     </v-card>
+    <QuestionComponent :theme-list="selectedThemes" />
   </div>
 </template>
 <script>
 import ButtonComponent from "./ButtonComponent.vue";
+import QuestionComponent from "./QuestionComponent.vue";
 import { allThemes } from "@/views/Theme.js";
 
 export default {
   components: {
     ButtonComponent,
+    QuestionComponent,
   },
   data() {
     return {
@@ -35,35 +39,27 @@ export default {
       interval: null,
       randomIndex: null,
       btnDisplay: true,
-      themeIsRunning: true,
+      result: "質問",
+      selectedThemes: [],
     };
   },
   methods: {
     startLottery() {
-      this.btnDisplay = false;
       this.interval = setInterval(() => {
-        // ランダムな数値を生成
         this.randomIndex = Math.floor(Math.random() * this.theme.length);
+        this.btnDisplay = false;
+        this.result = this.theme[this.randomIndex];
+        console.log(this.startLottery);
       }, 80);
     },
     stopLottery() {
-      this.btnDisplay = true;
-      // ランダム表示を停止
       clearInterval(this.interval);
-      return this.theme[this.randomIndex];
-    },
-    theme_shuffle_button() {
-      if (this.themeIsRunning == true) {
-        // 抽選処理を走らせる
-        this.startLottery();
-        // 次回ボタン押下時に抽選ストップ処理を走らせるために抽選処理判定用変数にfalseを挿入
-        this.themeIsRunning = false;
-      } else {
-        // 抽選ストップ処理を走らせる
-        this.stopLottery();
-        // 次回ボタン押下時に抽選処理を走らせるために抽選処理判定用変数にtrueを挿入
-        this.themeIsRunning = true;
-      }
+      this.btnDisplay = true;
+      // 一度使用したお題を表示させないためにお題配列の中から削除
+      allThemes.splice(this.randomIndex, 1);
+      // 一度使用したお題を２回目抽選用配列に格納
+      this.selectedThemes.push(this.result);
+      console.log(this.selectedThemes);
     },
   },
 };
