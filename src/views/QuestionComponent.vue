@@ -2,20 +2,19 @@
   <div class="custom-font-size">
     <v-card class="pa-14 ml-12 mt-6" width="58%" height="500">
       <div class="text-center d-flex justify-center mt-14">
-        <div cols="4">
+        <div>
           <p>{{ "回答者" }}</p>
           <div>
             <v-img
-              class="answer-img mx-auto mb-4 secondary rounded-circle d-inline-block"
-              src="/workspace/src/views/Members.js"
+              class="answer-img mx-auto mb-5 secondary rounded-circle d-inline-block d-flex position"
+              :src="memberResult.image"
               alt="回答者の写真"
               width="150"
               height="150"
               border-0
             >
-              {{ member.image }}
-              {{ member.text }}
             </v-img>
+            {{ memberResult.text }}
           </div>
           <ButtonComponent
             v-if="btnMemberDisplay"
@@ -70,31 +69,34 @@ export default {
       member: allMembers,
       btnMemberDisplay: true,
       memberIndex: null,
-      memberResult: null,
+      memberResult: "",
       memberInterval: null,
     };
   },
   methods: {
+    // スタートボタンを押したらお題抽選が開始
     startSelectedTheme() {
       this.interval = setInterval(() => {
         this.randomIndex = Math.floor(Math.random() * this.themeList.length);
         this.btnDisplay = false;
         this.result = this.themeList[this.randomIndex];
       }, 80);
-      console.log(this.randomIndex);
+      console.log(this.member.text);
     },
+    // ストップボタンを押したらお題抽選が停止
     stopSelectedTheme() {
       clearInterval(this.interval);
       this.btnDisplay = true;
     },
+    // スタートボタンを押したら回答者抽選が開始
     startMembersShuffle() {
       this.memberInterval = setInterval(() => {
-        this.memberIndex = Math.floor(Math.random() * this.member.text);
-        console.log(this.memberInterval);
+        this.memberIndex = Math.floor(Math.random() * this.member.length);
         this.btnMemberDisplay = false;
         this.memberResult = this.member[this.memberIndex];
       }, 80);
     },
+    // ストップボタンを押したら回答者抽選が停止
     stopMembersShuffle() {
       clearInterval(this.memberInterval);
       this.btnMemberDisplay = true;

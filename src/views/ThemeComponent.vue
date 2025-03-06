@@ -6,6 +6,8 @@
           <div class="font-weight-large">{{ "お題" }}</div>
           <div class="mb-6 mt-6">
             {{ result }}
+          </div>
+          <div>
             <ButtonComponent
               v-if="btnDisplay"
               @click="startLottery"

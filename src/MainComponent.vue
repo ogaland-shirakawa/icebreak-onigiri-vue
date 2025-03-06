@@ -2,12 +2,12 @@
   <v-app color="orange">
     <div id="app" style="background-color: orange">
       <!-- <v-app-bar color="#F4E2D0">
-        <span class="white--text">
+        <span class="green--text">
           佐藤です、好きなおにぎりの具は梅干しです。
         </span>
       </v-app-bar> -->
       <ThemeComponent />
-      <QuestionComponent />
+      <!-- <QuestionComponent /> -->
       <MembersComponent />
     </div>
   </v-app>
@@ -15,14 +15,14 @@
 
 <script>
 import ThemeComponent from "./views/ThemeComponent.vue";
-import QuestionComponent from "./views/QuestionComponent.vue";
+// import QuestionComponent from "./views/QuestionComponent.vue";
 import MembersComponent from "./views/MembersComponent.vue";
 
 export default {
   name: "MainComponent",
   components: {
     ThemeComponent,
-    QuestionComponent,
+    // QuestionComponent,
     MembersComponent,
   },
 };
