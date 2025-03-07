@@ -3,7 +3,7 @@
     <v-btn
       v-bind="{ ...$attrs }"
       v-on="$listeners"
-      class="light-green darken-3 white--text"
+      class="light-green darken-4 white--text"
     >
       {{ btnText }}
     </v-btn>

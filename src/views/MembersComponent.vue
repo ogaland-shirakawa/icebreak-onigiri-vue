@@ -1,18 +1,24 @@
 <template>
   <div>
-    <v-navigation-drawer absolute permanent right width="35%">
-      <p class="text-center font-weight-large mt-4">{{ "参加者" }}</p>
+    <v-card
+      class="absolute permanent right mx-auto"
+      width="38%"
+      color="#F4E2D0"
+    >
+      <p class="text-center font-weight-large mt-2">{{ "参加者" }}</p>
       <div class="d-flex flex-wrap">
-        <template v-for="member in members">
-          <MemberComponent :key="member.image" />
+        <template>
+          <div v-for="member in members" :key="member.id">
+            <MemberComponent :member="member" />
+          </div>
         </template>
       </div>
-    </v-navigation-drawer>
+    </v-card>
   </div>
 </template>
 <script>
 import MemberComponent from "./MemberComponent.vue";
-import { allMembers } from "./Members";
+import { allMembers } from "../Members";
 
 export default {
   components: {

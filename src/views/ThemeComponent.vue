@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card class="pa-10 ml-12 mt-5" width="58%" height="250">
+    <v-card class="pa-10 ml-12 mt-5" width="58%" height="250" color="#F4E2D0">
       <div>
         <div class="text-center">
           <div class="font-weight-large">{{ "お題" }}</div>
@@ -28,7 +28,7 @@
 <script>
 import ButtonComponent from "./ButtonComponent.vue";
 import QuestionComponent from "./QuestionComponent.vue";
-import { allThemes } from "@/views/Theme.js";
+import { allThemes } from "@/Theme.js";
 
 export default {
   components: {
@@ -51,7 +51,6 @@ export default {
         this.randomIndex = Math.floor(Math.random() * this.theme.length);
         this.btnDisplay = false;
         this.result = this.theme[this.randomIndex];
-        console.log(this.startLottery);
       }, 80);
     },
     stopLottery() {
@@ -61,7 +60,6 @@ export default {
       allThemes.splice(this.randomIndex, 1);
       // 一度使用したお題を２回目抽選用配列に格納
       this.selectedThemes.push(this.result);
-      console.log(this.selectedThemes);
     },
   },
 };

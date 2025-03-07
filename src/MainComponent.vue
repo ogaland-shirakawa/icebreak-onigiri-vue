@@ -6,9 +6,11 @@
           佐藤です、好きなおにぎりの具は梅干しです。
         </span>
       </v-app-bar> -->
-      <ThemeComponent />
+      <div class="d-flex">
+        <ThemeComponent />
+        <MembersComponent />
+      </div>
       <!-- <QuestionComponent /> -->
-      <MembersComponent />
     </div>
   </v-app>
 </template>

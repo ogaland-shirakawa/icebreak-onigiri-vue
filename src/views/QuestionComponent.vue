@@ -1,20 +1,28 @@
 <template>
   <div class="custom-font-size">
-    <v-card class="pa-14 ml-12 mt-6" width="58%" height="500">
-      <div class="text-center d-flex justify-center mt-14">
-        <div>
+    <v-card
+      class="pa-14 ml-12 mt-6 mr-12"
+      width="100%"
+      height="500"
+      color="#F4E2D0"
+    >
+      <div class="text-center d-flex justify-space-around mt-14">
+        <div class="position-relative my-auto">
           <p>{{ "回答者" }}</p>
           <div>
             <v-img
               class="answer-img mx-auto mb-5 secondary rounded-circle d-inline-block d-flex position"
-              :src="memberResult.image"
+              :src="
+                memberResult.image
+                  ? memberResult.image
+                  : '/images/users/スクリーンショット 2025-03-07 162510.png'
+              "
               alt="回答者の写真"
               width="150"
               height="150"
-              border-0
             >
             </v-img>
-            {{ memberResult.text }}
+            {{ memberResult.name }}
           </div>
           <ButtonComponent
             v-if="btnMemberDisplay"
@@ -27,8 +35,8 @@
             :btn-text="'Stop'"
           />
         </div>
-        <div class="px-10 mt-16">{{ "の" }}</div>
-        <div class="font-weight-large">
+        <div class="px-10 my-auto justify-center">{{ "の" }}</div>
+        <div class="font-weight-large my-auto position-relative">
           <p>{{ "お題" }}</p>
           <div class="mb-6 mt-6">
             {{ result }}
@@ -50,7 +58,7 @@
 </template>
 <script>
 import ButtonComponent from "./ButtonComponent.vue";
-import { allMembers } from "@/views/Members.js";
+import { allMembers } from "@/Members.js";
 export default {
   components: {
     ButtonComponent,
@@ -65,7 +73,7 @@ export default {
       interval: null,
       randomIndex: null,
       btnDisplay: true,
-      result: "",
+      result: "質問",
       member: allMembers,
       btnMemberDisplay: true,
       memberIndex: null,
@@ -81,7 +89,6 @@ export default {
         this.btnDisplay = false;
         this.result = this.themeList[this.randomIndex];
       }, 80);
-      console.log(this.member.text);
     },
     // ストップボタンを押したらお題抽選が停止
     stopSelectedTheme() {
