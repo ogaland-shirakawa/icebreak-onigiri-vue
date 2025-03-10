@@ -10,22 +10,28 @@
         <ThemeComponent />
         <MembersComponent />
       </div>
-      <!-- <QuestionComponent /> -->
     </div>
+    <div>{{ getCounter }}</div>
+    <v-btn @click="setCounter(100)">aa</v-btn>
   </v-app>
 </template>
 
 <script>
 import ThemeComponent from "./views/ThemeComponent.vue";
-// import QuestionComponent from "./views/QuestionComponent.vue";
 import MembersComponent from "./views/MembersComponent.vue";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "MainComponent",
   components: {
     ThemeComponent,
-    // QuestionComponent,
     MembersComponent,
+  },
+  computed: {
+    ...mapGetters("setMembers", ["getCounter"]),
+  },
+  methods: {
+    ...mapActions("setMembers", ["setCounter"]),
   },
 };
 </script>

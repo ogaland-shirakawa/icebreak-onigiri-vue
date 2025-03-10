@@ -1,12 +1,14 @@
 <template>
   <div class="custom-font-size">
     <v-card
-      class="pa-14 ml-12 mt-6 mr-12"
-      width="100%"
-      height="500"
+      class="pa-14 ml-12 mt-8 mr-12 mb-5"
+      width="1100"
+      height="520"
       color="#F4E2D0"
     >
-      <div class="text-center d-flex justify-space-around mt-14">
+      <div
+        class="text-center d-flex justify-space-around position-relative mt-14"
+      >
         <div class="position-relative my-auto">
           <p>{{ "回答者" }}</p>
           <div>
@@ -35,10 +37,12 @@
             :btn-text="'Stop'"
           />
         </div>
-        <div class="px-10 my-auto justify-center">{{ "の" }}</div>
-        <div class="font-weight-large my-auto position-relative">
+        <div class="px-8 my-auto justify-center position-relative">
+          {{ "の" }}
+        </div>
+        <div class="font-weight-large my-auto">
           <p>{{ "お題" }}</p>
-          <div class="mb-6 mt-6">
+          <div class="mb-6 mt-6 position-relative">
             {{ result }}
           </div>
           <ButtonComponent
@@ -59,6 +63,7 @@
 <script>
 import ButtonComponent from "./ButtonComponent.vue";
 import { allMembers } from "@/Members.js";
+
 export default {
   components: {
     ButtonComponent,
