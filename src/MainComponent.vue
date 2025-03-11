@@ -28,10 +28,10 @@ export default {
     MembersComponent,
   },
   computed: {
-    ...mapGetters("setMembers", ["getCounter"]),
+    ...mapGetters("sample", ["getCounter"]),
   },
   methods: {
-    ...mapActions("setMembers", ["setCounter"]),
+    ...mapActions("sample", ["setCounter"]),
   },
 };
 </script>

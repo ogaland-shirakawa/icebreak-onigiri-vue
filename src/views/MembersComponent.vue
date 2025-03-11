@@ -13,6 +13,7 @@
             <MemberComponent :member="member" />
           </div>
         </template>
+        <v-btn @click="removeItem()">Reset</v-btn>
       </div>
     </v-card>
   </div>
@@ -29,6 +30,13 @@ export default {
     return {
       members: allMembers,
     };
+  },
+  methods: {
+    removeItem() {
+      localStorage.removeItem("@onigiri");
+      location.reload();
+      console.log("aaa");
+    },
   },
 };
 </script>

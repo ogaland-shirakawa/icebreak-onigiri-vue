@@ -12,15 +12,15 @@
       <div class="mb-2 d-flex justify-center">
         <v-btn
           class="light-green darken-4 white--text"
-          @click="minusScore"
+          @click="pointDown()"
           x-small
         >
           －
         </v-btn>
-        <div class="mx-2" :allCount="count">{{ count }}</div>
+        <v-form class="mx-2">{{ displayPoint }}</v-form>
         <v-btn
           class="light-green darken-4 white--text"
-          @click="plusScore"
+          @click="pointUp()"
           x-small
         >
           ＋
@@ -30,26 +30,34 @@
   </div>
 </template>
 <script>
+import { mapActions, mapGetters } from "vuex";
+
 export default {
-  data() {
-    return {
-      count: 0,
-    };
-  },
   props: {
     member: {
       type: Array,
       required: true,
     },
   },
-  methods: {
-    plusScore() {
-      this.count++;
+  computed: {
+    ...mapGetters("sample", ["getPlusCounter", "getMinusCounter"]),
+    // countersのインデックスとmemberのidを合わせ、ポイントを表示
+    displayPoint() {
+      let userKey = `user${this.member.id}`;
+      return this.getPlusCounter[userKey];
     },
-    minusScore() {
-      if (this.count > 0) {
-        this.count--;
-      }
+  },
+  methods: {
+    ...mapActions("sample", ["setPlusCounter", "setMinusCounter"]),
+    // ボタンを押すと1ポイント加算される
+    pointUp() {
+      let userKey = `user${this.member.id}`;
+      this.setPlusCounter(userKey);
+    },
+    // ボタンを押すと1ポイント減算される
+    pointDown() {
+      let userKey = `user${this.member.id}`;
+      this.setMinusCounter(userKey);
     },
   },
 };
