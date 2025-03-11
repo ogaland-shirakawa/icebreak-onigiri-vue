@@ -1,6 +1,6 @@
 <template>
   <v-app color="orange">
-    <div id="app" style="background-color: orange">
+    <div id="app" style="background-color: #a9b9cf">
       <!-- <v-app-bar color="#F4E2D0">
         <span class="green--text">
           佐藤です、好きなおにぎりの具は梅干しです。
@@ -12,7 +12,7 @@
       </div>
     </div>
     <div>{{ getCounter }}</div>
-    <v-btn @click="setCounter(100)">aa</v-btn>
+    <!-- <v-btn @click="setCounter(100)">aa</v-btn> -->
   </v-app>
 </template>
 

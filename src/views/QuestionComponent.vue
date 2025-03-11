@@ -3,8 +3,8 @@
     <v-card
       class="pa-14 ml-12 mt-8 mr-12 mb-5"
       width="1100"
-      height="520"
-      color="#F4E2D0"
+      height="530"
+      color="#fff"
     >
       <div
         class="text-center d-flex justify-space-around position-relative mt-14"
