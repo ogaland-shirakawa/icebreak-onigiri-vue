@@ -10,12 +10,12 @@
           <div>
             <ButtonComponent
               v-if="btnDisplay"
-              @click="startLottery"
+              @click="startLottery()"
               :btn-text="'Start'"
             />
             <ButtonComponent
               v-if="!btnDisplay"
-              @click="stopLottery"
+              @click="stopLottery()"
               :btn-text="'Stop'"
             />
           </div>
@@ -29,6 +29,8 @@
 import ButtonComponent from "./ButtonComponent.vue";
 import QuestionComponent from "./QuestionComponent.vue";
 import { allThemes } from "@/Theme.js";
+import { returnLotteryResult } from "@/common";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   components: {
@@ -45,21 +47,29 @@ export default {
       selectedThemes: [],
     };
   },
+  computed: {
+    ...mapGetters("firstThemes", ["getFirstSelectedThemes"]),
+  },
   methods: {
+    ...mapActions("firstThemes", ["setFirstSelectedThemes"]),
+    // スタートボタンを押したらお題抽選が開始
     startLottery() {
+      this.btnDisplay = false;
       this.interval = setInterval(() => {
-        this.randomIndex = Math.floor(Math.random() * this.theme.length);
-        this.btnDisplay = false;
-        this.result = this.theme[this.randomIndex];
+        this.result = returnLotteryResult(this.theme);
       }, 80);
     },
+    // ストップボタンを押したらお題抽選が停止
     stopLottery() {
-      clearInterval(this.interval);
       this.btnDisplay = true;
       // 一度使用したお題を表示させないためにお題配列の中から削除
       allThemes.splice(this.randomIndex, 1);
       // 一度使用したお題を２回目抽選用配列に格納
       this.selectedThemes.push(this.result);
+      clearInterval(this.interval);
+      // 選ばれたお題をローカルストレージに保存
+      let firstSelectedTheme = this.result;
+      this.setFirstSelectedThemes(firstSelectedTheme);
     },
   },
 };

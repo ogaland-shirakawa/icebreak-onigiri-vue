@@ -28,12 +28,12 @@
           </div>
           <ButtonComponent
             v-if="btnMemberDisplay"
-            @click="startMembersShuffle"
+            @click="startMembersShuffle()"
             :btn-text="'Start'"
           />
           <ButtonComponent
             v-if="!btnMemberDisplay"
-            @click="stopMembersShuffle"
+            @click="stopMembersShuffle()"
             :btn-text="'Stop'"
           />
         </div>
@@ -47,12 +47,12 @@
           </div>
           <ButtonComponent
             v-if="btnDisplay"
-            @click="startSelectedTheme"
+            @click="startSelectedTheme()"
             :btn-text="'Start'"
           />
           <ButtonComponent
             v-if="!btnDisplay"
-            @click="stopSelectedTheme"
+            @click="stopSelectedTheme()"
             :btn-text="'Stop'"
           />
         </div>
@@ -63,6 +63,8 @@
 <script>
 import ButtonComponent from "./ButtonComponent.vue";
 import { allMembers } from "@/Members.js";
+import { returnLotteryResult } from "@/common.js";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   components: {
@@ -86,32 +88,44 @@ export default {
       memberInterval: null,
     };
   },
+  computed: {
+    ...mapGetters("answerMember", ["getSelectedMember"]),
+    ...mapGetters("secoundThemes", ["getSecondSelectedThemes"]),
+  },
   methods: {
-    // スタートボタンを押したらお題抽選が開始
-    startSelectedTheme() {
-      this.interval = setInterval(() => {
-        this.randomIndex = Math.floor(Math.random() * this.themeList.length);
-        this.btnDisplay = false;
-        this.result = this.themeList[this.randomIndex];
-      }, 80);
-    },
-    // ストップボタンを押したらお題抽選が停止
-    stopSelectedTheme() {
-      clearInterval(this.interval);
-      this.btnDisplay = true;
-    },
+    ...mapActions("answerMember", ["setSelectedMember"]),
+    ...mapActions("secoundThemes", ["setSecondSelectedThemes"]),
     // スタートボタンを押したら回答者抽選が開始
     startMembersShuffle() {
+      this.btnMemberDisplay = false;
       this.memberInterval = setInterval(() => {
-        this.memberIndex = Math.floor(Math.random() * this.member.length);
-        this.btnMemberDisplay = false;
-        this.memberResult = this.member[this.memberIndex];
+        this.memberResult = returnLotteryResult(this.member);
       }, 80);
     },
     // ストップボタンを押したら回答者抽選が停止
     stopMembersShuffle() {
-      clearInterval(this.memberInterval);
       this.btnMemberDisplay = true;
+      // 選ばれたメンバーをローカルストレージに保存
+      let selectedMember = this.memberResult.name;
+      this.setSelectedMember(selectedMember);
+      // 抽選をストップ
+      clearInterval(this.memberInterval);
+    },
+    // スタートボタンを押したらお題抽選が開始
+    startSelectedTheme() {
+      this.btnDisplay = false;
+      this.interval = setInterval(() => {
+        this.result = returnLotteryResult(this.themeList);
+      }, 80);
+    },
+    // ストップボタンを押したらお題抽選が停止
+    stopSelectedTheme() {
+      this.btnDisplay = true;
+      // 抽選をストップ
+      clearInterval(this.interval);
+      // 選ばれたお題をローカルストレージに保存
+      let secondSelectedTheme = this.result;
+      this.setSecondSelectedThemes(secondSelectedTheme);
     },
   },
 };

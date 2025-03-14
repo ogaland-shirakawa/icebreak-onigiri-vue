@@ -19,7 +19,7 @@
 <script>
 import ThemeComponent from "./views/ThemeComponent.vue";
 import MembersComponent from "./views/MembersComponent.vue";
-import { mapActions, mapGetters } from "vuex";
+// import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "MainComponent",
@@ -27,12 +27,12 @@ export default {
     ThemeComponent,
     MembersComponent,
   },
-  computed: {
-    ...mapGetters("sample", ["getCounter"]),
-  },
-  methods: {
-    ...mapActions("sample", ["setCounter"]),
-  },
+  // computed: {
+  //   ...mapGetters("sample", ["getCounter"]),
+  // },
+  // methods: {
+  //   ...mapActions("sample", ["setCounter"]),
+  // },
 };
 </script>
 

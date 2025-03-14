@@ -40,7 +40,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters("sample", ["getPlusCounter", "getMinusCounter"]),
+    ...mapGetters("points", ["getPlusCounter", "getMinusCounter"]),
     // countersのインデックスとmemberのidを合わせ、ポイントを表示
     displayPoint() {
       let userKey = `user${this.member.id}`;
@@ -48,7 +48,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions("sample", ["setPlusCounter", "setMinusCounter"]),
+    ...mapActions("points", ["setPlusCounter", "setMinusCounter"]),
     // ボタンを押すと1ポイント加算される
     pointUp() {
       let userKey = `user${this.member.id}`;
